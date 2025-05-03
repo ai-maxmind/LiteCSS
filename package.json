@@ -1,0 +1,40 @@
+{
+  "name": "litecss",
+  "version": "1.0.0",
+  "description": "The best HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web.",
+  "main": "postcss.config.js",
+  "scripts": {
+    "build:babel": "babel js --out-dir lib --source-maps",
+    "build:webpack": "webpack --config webpack.config.js",
+    "build:rollup": "rollup -c rollup.config.js",
+    "build": "npm run build:babel && npm run build:webpack && npm run build:rollup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ai-maxmind/LiteCSS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ai-maxmind/LiteCSS/issues"
+  },
+  "homepage": "https://github.com/ai-maxmind/LiteCSS#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.27.1",
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.1",
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "autoprefixer": "^10.4.21",
+    "babel-loader": "^10.0.0",
+    "core-js": "^3.42.0",
+    "cssnano": "^7.0.6",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "rollup": "^2.79.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "webpack": "^5.99.7",
+    "webpack-cli": "^6.0.1"
+  }
+}
