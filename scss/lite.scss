@@ -1,6 +1,8 @@
 @use "./grid/grid";
 @use "./theme/theme";
 @use "./button/button";
+@use "./tables/tables";
+@use "./colors/palette";
 
 $primary: #0d6efd;
 $secondary: #6c757d;

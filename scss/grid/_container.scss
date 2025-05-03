@@ -16,3 +16,9 @@
     }
   }
   
+  .container-fluid {
+    width: 100%;
+    padding-inline: v.$grid-gutter;
+    margin-inline: auto;
+    display: block;
+  }
