@@ -1,0 +1,47 @@
+@use "sass:list";
+@use "mixins" as m;
+$themes: (
+    dark: (#1e1e1e, #444, #28a745, #dc3545, #ffc107, #17a2b8, #0d6efd, #fff),
+    light: (#ffffff, #f1f1f1, #28a745, #dc3545, #ffc107, #17a2b8, #0d6efd, #000),
+    dracula: (#6272a4, #44475a, #50fa7b, #ff5555, #f1fa8c, #8be9fd, #bd93f9, #f8f8f2),
+    solarized: (#268bd2, #2aa198, #859900, #dc322f, #b58900, #268bd2, #6c71c4, #fdf6e3),
+    nord: (#5e81ac, #4c566a, #a3be8c, #bf616a, #ebcb8b, #88c0d0, #81a1c1, #eceff4),
+    monokai: (#f92672, #75715e, #a6e22e, #f44747, #fd971f, #66d9ef, #ae81ff, #f8f8f2),
+    palenight: (#c792ea, #676e95, #c3e88d, #ff5370, #ffcb6b, #82aaff, #89ddff, #a6accd),
+    material: (#6200ea, #03dac6, #00c853, #b00020, #ffab00, #2196f3, #2962ff, #fff),
+    gruvbox: (#d79921, #928374, #98971a, #cc241d, #fabd2f, #458588, #83a598, #ebdbb2),
+    ayu: (#f9c11c, #a0a8b8, #7bdb8c, #e74c3c, #f39c12, #1abc9c, #3498db, #b3b1ad),
+    one-dark: (#61afef, #5c6370, #98c379, #e06c75, #e5c07b, #56b6c2, #61afef, #abb2bf),
+    zenburn: (#d0bf8f, #5f5b53, #7f9f7f, #d75f5f, #f0dfaf, #5fafd7, #d0bf8f, #fdf4c1),
+    github: (#2cbe4e, #586069, #28a745, #e53e3e, #ffcc00, #0366d6, #0366d6, #24292f),
+    base16: (#f38ba8, #8c8c8c, #7bcf7b, #e57373, #ffb74d, #64b5f6, #7986cb, #e1e1e1),
+    cobalt2: (#005f87, #6e7f87, #3e9e6a, #e92e2e, #e8b92b, #4fa3d1, #89b6ff, #d0d0d0),
+    night-owl: (#82aaff, #a0b4d3, #98c379, #f44747, #ffcc00, #56b6c2, #f7c8f8, #d1d5db),
+    verminal: (#9fd1c7, #b6b6b6, #a8e6a1, #ff6c6b, #f4c542, #6bb9f0, #9fd1c7, #f0f0f0),
+    spacemacs: (#d33682, #586e75, #859900, #dc322f, #b58900, #268bd2, #6c71c4, #fdf6e3)
+  );
+  
+
+  
+  @each $theme, $colors in $themes {
+    .theme-#{$theme} {
+      @each $type, $idx in (primary: 1, secondary: 2, success: 3, danger: 4, warning: 5, info: 6, link: 7, text: 8) {
+        $color: list.nth($colors, $idx);
+        --btn-#{$type}: #{$color};
+        --btn-outline-#{$type}: #{$color};
+        @if $type == text { --btn-text: #{$color}; }
+      }
+  
+      @each $t in (primary, secondary, success, danger, warning, info, link, text) {
+        .btn--#{$t}         { @include m.btn-styles($t, normal, md); }
+        .btn--#{$t}-lg      { @include m.btn-styles($t, normal, lg); }
+        .btn--#{$t}-sm      { @include m.btn-styles($t, normal, sm); }
+        .btn--outline-#{$t} { @include m.btn-styles($t, outline, md); }
+        .btn--outline-#{$t}-lg { @include m.btn-styles($t, outline, lg); }
+        .btn--outline-#{$t}-sm { @include m.btn-styles($t, outline, sm); }
+      }
+    }
+  }
+  .theme-light {
+    --btn-outline-primary: #000;
+  }

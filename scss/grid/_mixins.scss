@@ -1,0 +1,36 @@
+@use "variables" as v;
+@use "sass:map";
+@use "sass:math"; 
+@mixin media-breakpoint-up($breakpoint) {
+    @if map.has-key(v.$grid-breakpoints, $breakpoint) {
+      @media (min-width: map.get(v.$grid-breakpoints, $breakpoint)) {
+        @content;
+      }
+    }
+  }
+  
+  @mixin generate-columns($prefix: '') {
+    @for $i from 1 through v.$grid-columns {
+      .#{$prefix}col-#{$i} {
+        flex: 0 0 #{math.div($i, v.$grid-columns) * 100} + '%'; 
+        max-width: #{math.div($i, v.$grid-columns) * 100} + '%'; 
+        padding-left: calc(v.$grid-gutter / 2);
+        padding-right: calc(v.$grid-gutter / 2);
+      }
+    }
+    .#{$prefix}col-auto {
+      flex: 0 0 auto;
+      width: auto;
+      max-width: none;
+      padding-left: calc(v.$grid-gutter / 2);
+      padding-right: calc(v.$grid-gutter / 2);
+    }
+    .#{$prefix}col {
+      flex-grow: 1;
+      flex-basis: 0;
+      max-width: 100%;
+      padding-left: calc(v.$grid-gutter / 2);
+      padding-right: calc(v.$grid-gutter / 2);
+    }
+  }
+  

@@ -6,7 +6,7 @@ MINIFIED="dist/litecss.min.css"
 
 mkdir -p dist
 
-for cmd in sass postcss browser-sync inotifywait; do
+for cmd in sass autoprefixer cssnano postcss postcss-cli browser-sync inotifywait; do
   if ! command -v "$cmd" &>/dev/null; then
     echo "❌ Missing $cmd. Checking npm/node..."
     if ! command -v npm &>/dev/null; then
@@ -65,12 +65,12 @@ EOF
 fi
 
 echo "🎨 Compiling SCSS..."
-sass "$INPUT" "$OUTPUT" --no-source-map
+sass "$INPUT" "$OUTPUT"
 
 echo "🗜️ Minify CSS..."
 npx postcss "$OUTPUT" -o "$MINIFIED"
 
-browser-sync start --server dist --files "dist/style.min.css" "theme-demo.html" --no-notify &
+browser-sync start --server dist --files "dist/litecss.min.css" "theme-demo.html" --no-notify &
 
 echo "👀 Watching $INPUT and minifying on change..."
 inotifywait -m -e close_write scss | while read -r path action file; do

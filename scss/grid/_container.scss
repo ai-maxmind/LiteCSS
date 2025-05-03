@@ -1,0 +1,18 @@
+@use "variables" as v;
+@use "mixins" as m;
+.container {
+    width: 100%;
+    padding-left: v.$grid-gutter;
+    padding-right: v.$grid-gutter;
+    margin-left: auto;
+    margin-right: auto;
+  
+    @each $breakpoint, $value in v.$grid-breakpoints {
+      @if $value != 0 {
+        @include m.media-breakpoint-up($breakpoint) {
+          max-width: $value;
+        }
+      }
+    }
+  }
+  

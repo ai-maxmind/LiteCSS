@@ -1,0 +1,10 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+@include m.generate-columns();
+
+@each $breakpoint, $value in v.$grid-breakpoints {
+  @include m.media-breakpoint-up($breakpoint) {
+    @include m.generate-columns('#{$breakpoint}-');
+  }
+}

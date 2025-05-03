@@ -1,0 +1,25 @@
+@use "variables" as v;
+@use "sass:math"; 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -calc(math.div(v.$grid-gutter, 2)); 
+    margin-left: -calc(math.div(v.$grid-gutter, 2));
+    &.no-gutters {
+      margin-right: 0;
+      margin-left: 0;
+      > [class*='col'] {
+        padding-right: 0;
+        padding-left: 0;
+      }
+    }
+    &.align-start   { align-items: flex-start; }
+    &.align-center  { align-items: center; }
+    &.align-end     { align-items: flex-end; }
+    &.justify-start { justify-content: flex-start; }
+    &.justify-center{ justify-content: center; }
+    &.justify-end   { justify-content: flex-end; }
+    &.justify-between{ justify-content: space-between; }
+    &.justify-around{ justify-content: space-around; }
+  }
+  

@@ -1,10 +1,10 @@
-$input = "scss/main.scss"
+$input = "scss/lite.scss"
 $output = "dist/litecss.css"
 $minified = "dist/litecss.min.css"
 
 if (-not (Test-Path "dist")) { mkdir dist }
 
-$commands = @("sass", "postcss", "browser-sync")
+$commands = @("sass", "autoprefixer", "cssnano", "postcss", "postcss-cli", "browser-sync", "inotifywait")
 foreach ($cmd in $commands) {
     if (-not (Get-Command $cmd -ErrorAction SilentlyContinue)) {
         Write-Host "Installing $cmd..."

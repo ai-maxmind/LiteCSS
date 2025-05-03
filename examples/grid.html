@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SCSS Grid Demo</title>
+  <link rel="preload" href="../dist/litecss.min.css" as="style" />
+  <link rel="stylesheet" href="../dist/litecss.min.css" />
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+    }
+    h2 {
+      margin-top: 3rem;
+      color: #333;
+    }
+    .demo-box {
+      background: #f1f1f1;
+      border: 1px dashed #999;
+      text-align: center;
+      padding: 1rem;
+      font-weight: bold;
+    }
+    .grid-debug .demo-box {
+      background: repeating-linear-gradient(
+        45deg,
+        #e3e3e3,
+        #e3e3e3 10px,
+        #c0c0c0 10px,
+        #c0c0c0 20px
+      );
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>🔥 SCSS GRID DEMO</h1>
+
+    <h2>📐 Basic Grid</h2>
+    <div class="row">
+      <div class="col-6"><div class="demo-box">col-6</div></div>
+      <div class="col-6"><div class="demo-box">col-6</div></div>
+    </div>
+
+    <h2>📱 Responsive Grid</h2>
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4"><div class="demo-box">col-12 → col-sm-6 → col-md-4</div></div>
+      <div class="col-12 col-sm-6 col-md-8"><div class="demo-box">col-12 → col-sm-6 → col-md-8</div></div>
+    </div>
+
+    <h2>🔄 Auto Layout</h2>
+    <div class="row">
+      <div class="col"><div class="demo-box">Auto</div></div>
+      <div class="col"><div class="demo-box">Auto</div></div>
+      <div class="col"><div class="demo-box">Auto</div></div>
+    </div>
+
+    <h2>🚗 Auto Width (col-auto)</h2>
+    <div class="row">
+      <div class="col-auto"><div class="demo-box">Auto Width</div></div>
+      <div class="col"><div class="demo-box">Fill Remaining</div></div>
+    </div>
+
+    <h2>🎯 Vertical Align (align-center)</h2>
+    <div class="row align-center" style="height: 150px;">
+      <div class="col-4"><div class="demo-box">Center Vertically</div></div>
+    </div>
+
+    <h2>🧭 Justify Content</h2>
+    <div class="row justify-between">
+      <div class="col-3"><div class="demo-box">Left</div></div>
+      <div class="col-3"><div class="demo-box">Right</div></div>
+    </div>
+
+    <h2>🚫 No Gutters</h2>
+    <div class="row no-gutters">
+      <div class="col-6"><div class="demo-box">No Gutter Left</div></div>
+      <div class="col-6"><div class="demo-box">No Gutter Right</div></div>
+    </div>
+
+    <h2>🧮 Nested Grid</h2>
+    <div class="row">
+      <div class="col-8">
+        <div class="demo-box">Parent col-8</div>
+        <div class="row">
+          <div class="col-6"><div class="demo-box">Nested col-6</div></div>
+          <div class="col-6"><div class="demo-box">Nested col-6</div></div>
+        </div>
+      </div>
+      <div class="col-4"><div class="demo-box">Parent col-4</div></div>
+    </div>
+
+    <h2>🧪 Debug Mode</h2>
+    <div class="row grid-debug">
+      <div class="col-3"><div class="demo-box">Debug 1</div></div>
+      <div class="col-3"><div class="demo-box">Debug 2</div></div>
+      <div class="col-3"><div class="demo-box">Debug 3</div></div>
+      <div class="col-3"><div class="demo-box">Debug 4</div></div>
+    </div>
+  </div>
+
+</body>
+</html>
